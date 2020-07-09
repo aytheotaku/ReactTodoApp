@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+// import Container from './components/container-component/Container'
+// import User from './components/user-component/User'
+import Container from './components/container-component/Container'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export class App extends Component {
+  constructor(){
+    super()
+
+    this.state = {
+      users: []
+    }
+  }
+  componentDidMount(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response=>{
+      if(!response.ok){
+        throw new Error (`Couldn't locate api.`)
+      }
+      return response
+    }).then(response=>response.json()).then(data=>{this.setState({users:data})})
+    .catch(err=>console.log(`something went wrong ${err}`))
+  }
+
+render() {
+    return (
+      <>
+        <div>
+          <Container users={this.state.users}/>
+        </div>
+      </>
+    )
+  }
 }
 
-export default App;
+export default App

@@ -1,0 +1,25 @@
+.completed{
+    color: white;
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.container{
+    margin: 0 auto;
+    width: 50vw;
+    height: 50vh;
+    text-align: center;
+    margin-top: 25vh;
+}
+
+.btn{
+    margin-top: 10px;
+    background-color: springgreen;
+}
+
+.ul{
+    text-align: start;
+}
+.toDoBtn{
+    text-align: start;
+}
